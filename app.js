@@ -32,47 +32,36 @@ $(document).ready(function () {
 
                     // Transfer content to HTML
                     $(".city").text("The city name is: " + data.city.name);
+                    $(".date").text("The date is: " + data.list[0].dt_txt);
                     console.log("tonnette wants to know " + data.city.name);
                     $(".temp").text("The Temperature (F) is: " + data.list[0].main.temp);
+                    $(".humidity").text("The humidity is: " + data.list[0].main.humidity);
+                    $(".wind").text("The wind speed is: " + data.list[0].wind.speed);
+                    $(".uvindex").text("The UV Index is: " + data.list[0].wind.speed);
+
+                    // * Date
+
+                    // * Icon image (visual representation of weather conditions)
+                  
+                    // * Temperature
+                  
+                    // * Humidity
 
 
                     for (var i = 0; i < 6; i++) {
                         var iconcode = data.list[i].weather[0].icon;
                         var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
                         $("<img>").attr("src", iconurl);
-                        console.log("tonnette" + iconurl)
                         $(".icon"+i).attr("src", iconurl);
+                        $(".tempCard"+i).text("Temp: " + data.list[i].main.temp + " F")
+                        $(".humidCard"+i).text("Humidity: " + data.list[i].main.humidity)
+
                     }
 
-                    // var iconcode = data.list[0].weather[0].icon;
-                    // var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-                    // $("<img>").attr("src", iconurl);
-                    // console.log(iconurl)
-                    // $(".icon1").attr("src", iconurl);
-
-
-                    // var iconcode2 = data.list[1].weather[0].icon;
-                    // var iconurl2 = "http://openweathermap.org/img/w/" + iconcode2 + ".png";
-                    // $("<img>").attr("src", iconurl2);
-                    // console.log(iconurl2)
-                    // $(".icon2").attr("src", iconurl2);
-
-                    // var iconcode3 = data.list[2].weather[0].icon;
-                    // var iconurl3 = "http://openweathermap.org/img/w/" + iconcode3 + ".png";
-                    // $("<img>").attr("src", iconurl3);
-                    // console.log(iconurl2)
-                    // $(".icon3").attr("src", iconurl3);
-
-
-
-
-
-
-
-
-
+                    // for (var j = 0; j < 6; j++) {
+                        $(".dateCard").text(data.list[0].dt_txt);
+                    // }
                 })
-
 
         } else {
             alert("field cannot be empty");
