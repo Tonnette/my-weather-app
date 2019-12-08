@@ -3,6 +3,7 @@ $(document).ready(function () {
 
     $(".mag").on("click", function () {
         event.preventDefault();
+        $(".card").show();
     
 
         // Here we are building the URL we need to query the database
@@ -46,10 +47,7 @@ $(document).ready(function () {
           var image = $("<img>").attr("src", iconurl);
           console.log(iconurl)
 
-                    $(".icon").attr("src", iconurl);
-
-          // Appending the image
-          $(".weather-section").append(image);
+                    $(".icon1").attr("src", iconurl);
 
                     
 

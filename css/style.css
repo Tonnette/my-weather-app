@@ -95,5 +95,13 @@ p {
 .leftSide {
   border: none;
 }
+.card {
+  background-color: #2196F3;
+  color: white;
+  margin: 25px 25px 0px 0px;;
+  width: relative;
+  display: none;
+  
+}
 
 
