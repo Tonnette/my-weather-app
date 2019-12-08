@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Style the search field */
+  form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    padding-left: 5px;
+ 
+  }
+  
+  /* Style the submit button */
+  form.example button {
+    float: right;
+    width: 15%;
+    padding: 5px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+  }
+  
+  form.example button:hover {
+    background: #0b7dda;
+  }
+  
+  /* Clear floats */
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1;
+}
+
+p {
+    font-weight: bold;
+    color: grey;
+}
+
+
+
+.bigContainer {
+    border: 1px solid lightgray;
+}
+
+#weatherTitle {
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    background-color: black;
+    text-align: center;
+    font-size: 50px;
+}
+
+.myHeader {
+    background-color: black;
+}
+
+.leftHandDiv {
+    border-right: 1px solid lightgray;
+    background-color: #f0fbff;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 25px;
+}
+
+.userButtonsDiv {
+    
+    padding: 75px;
+    
+    margin: 25px 10px 0px 0px;
+    background-color: white;
+}
+
+.myRow, .myCol {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+
+.searchField {
+    padding: 10px;
+}
+
+
