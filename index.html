@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -31,36 +28,48 @@
                             <form class="example" action="action_page.php">
                                 <div class="form-row">
                                     <div class="col-lg-11">
-                                        <input type="text" class="form-control searchField" placeholder="Search.." name="search">
-                                        <button type="submit" class="btn btn-outline-primary mag"><i class="fa fa-search"></i></button>
-                                
+                                        <input type="text" class="form-control searchField" placeholder="Search.."
+                                            name="search">
+                                        <button type="submit" class="btn btn-outline-primary mag"><i
+                                                class="fa fa-search"></i></button>
+
                                     </div>
                                 </div>
                             </form>
-
-
-
-
-
-
-
-
-                            <div class="userButtonsDiv">
-
-                            </div>
-
+                            <div class="userButtonsDiv"></div>
 
                         </div>
                     </div>
+                    <div class="col-lg-8 col-sm-8">
+                        <br>
+                        <!-- This card will initially be made up of a card and wells for each of the articles retrieved -->
+                        <div class="card leftSide">
+                            <p>example</p>
+                            <!-- This main card will hold each of the resulting articles -->
+                            <div class="card-body weather-section">
+                                    <div class="city"></div>
+                                    <div class="wind"></div>
+                                    <div class="humidity"></div>
+                                    <div class="temp"></div>
+                                    <img class="icon">
+                                    
 
+                            </div>
+                        </div>
+                    </div>
+                    
                 </div>
+
+
             </div>
         </div>
     </div>
 
 
-    <script src="script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    </div>
+
+
+    <script src="app.js"></script>
 
 </body>
 
