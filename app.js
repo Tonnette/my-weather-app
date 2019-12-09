@@ -36,8 +36,24 @@ $(document).ready(function() {
                 // Providing the initial button text
                 newButton.text(userCityArray[i]);
                 // Adding the button to the buttons-view div
-                $(".userButtonsDiv").append(newButton);
+                var userButtonNew = $(".userButtonsDiv").append(newButton);
                 $(".userButtonsDiv").append("<br></br>");
+                // var lastUser = JSON.parse(localStorage.getItem("userButtons"));
+
+                // var buttonArray = JSON.parse(localStorage.getItem("userButtons")) || [];
+                var userbuttons = [];
+                console.log(" what are userbuttons " + userbuttons);
+                userbuttons.push(userButtonNew);
+                console.log(" what are userbuttons now after push " + userbuttons);
+
+                localStorage.setItem("userbuttons", JSON.stringify(userbuttons));
+                // console.log("tonnetre button array " + buttonArray);
+                // console.log("tonnetre userButtons " + userbuttons);
+
+                // var storage = localStorage.setItem("userbuttons", userbuttons);
+                // console.log(storage);
+
+
             }
 
         }
@@ -92,7 +108,5 @@ $(document).ready(function() {
 
     });
 
-    // $(document).on("click", ".city-btn", displayCityInfo);
-    // Calling the renderButtons function to display the initial buttons
-    // renderButtons();
+
 });
