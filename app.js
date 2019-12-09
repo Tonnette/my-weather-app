@@ -45,6 +45,7 @@ $(document).ready(function() {
         // Here we are building the URL we need to query the database
         if (userCity !== '') {
             $(".card").show();
+            $(".five-day").show();
             // var APIKey = "";
             // // Here we run our AJAX call to the OpenWeatherMap API
             $.ajax({

@@ -126,3 +126,7 @@ p {
     text-align: center;
     border: none;
 }
+
+.five-day {
+    display: none
+}
