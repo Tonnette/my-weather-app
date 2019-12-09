@@ -1,13 +1,9 @@
-$(document).ready(function () {
+$(document).ready(function() {
     var userCity;
 
 
-    $(".mag").on("click", function () {
+    $(".mag").on("click", function() {
         event.preventDefault();
-        $(".card").show();
-
-
-
 
         // Here we are building the URL we need to query the database
         var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=sydney&APPID=8260f022448e3f07d6465f550bc77374",
@@ -16,19 +12,20 @@ $(document).ready(function () {
         console.log(userCity);
 
         if (userCity !== '') {
-
+            $(".card").show();
             // var APIKey = "";
             // // Here we run our AJAX call to the OpenWeatherMap API
             $.ajax({
-                url: queryURL,
-                method: "GET",
-                dataType: "jsonp"
+                    url: queryURL,
+                    method: "GET",
+                    dataType: "jsonp"
 
-            })
+                })
                 //     // We store all of the retrieved data inside of an object called "response"
-                .then(function (data) {
+                .then(function(data) {
                     // Log the queryURL
                     console.log(queryURL);
+                    console.log(data);
 
                     // Transfer content to HTML
                     $(".city").text("The city name is: " + data.city.name);
@@ -42,33 +39,32 @@ $(document).ready(function () {
                     // * Date
 
                     // * Icon image (visual representation of weather conditions)
-                  
+
                     // * Temperature
-                  
+
                     // * Humidity
 
 
                     for (var i = 0; i < 6; i++) {
-                        var iconcode = data.list[i].weather[0].icon;
+                        var iconcode = data.list[i * 8].weather[0].icon;
                         var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
                         $("<img>").attr("src", iconurl);
-                        $(".icon"+i).attr("src", iconurl);
-                        $(".tempCard"+i).text("Temp: " + data.list[i].main.temp + " F")
-                        $(".humidCard"+i).text("Humidity: " + data.list[i].main.humidity)
+                        $(".icon" + i).attr("src", iconurl);
+                        $(".tempCard" + i).text("Temp: " + data.list[i * 8].main.temp + " F");
+                        $(".humidCard" + i).text("Humidity: " + data.list[i * 8].main.humidity);
+                        $(".dateCard" + i).text(data.list[i * 8].dt_txt);
 
                     }
 
-                    // for (var j = 0; j < 6; j++) {
-                        $(".dateCard").text(data.list[0].dt_txt);
-                    // }
-                })
+
+                });
 
         } else {
             alert("field cannot be empty");
         }
 
 
-    })
+    });
 
 
 });
