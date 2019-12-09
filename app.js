@@ -1,62 +1,43 @@
 $(document).ready(function() {
-    var userCityArray = [];
+    var userCityArray = []; 
     var newCity = $(this).attr("data-name");
+
+    function renderButtons() {
+        $(".userButtonsDiv").empty();
+        for (var i = 0; i < userCityArray.length; i++) {
+
+            // Then dynamicaly generating buttons for each movie in the array
+            // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
+            var newButton = $("<button>");
+            // Adding a class of movie-btn to our button
+            newButton.addClass("city-btn");
+            // Adding a data-attribute
+            newButton.attr("data-name", userCityArray[i]);
+            // Providing the initial button text
+            newButton.text(userCityArray[i]);
+            // Adding the button to the buttons-view div
+            var userButtonNew = $(".userButtonsDiv").append(newButton);
+            $(".userButtonsDiv").append("<br></br>");
+           
+
+
+        }
+
+    }
 
     $(".mag").on("click", function() {
         event.preventDefault();
         renderButtons();
-
-        var queryURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + "sydney" + "&units=metric" + "&APPID=8260f022448e3f07d6465f550bc77374",
-            // + city + "," + city + "&units=imperial&appid=" + APIKey;
-            userCity = $("#searchField").val();
+        var userCity = $("#searchField").val();
+        var queryURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + userCity + "&units=metric" + "&APPID=8260f022448e3f07d6465f550bc77374";
+    
         userCityArray.push(userCity);
         console.log(userCity);
         console.log(userCityArray);
         console.log(queryURL);
-        var firstNewButton = $("<button>");
-        // Adding a class of movie-btn to our button
-        firstNewButton.addClass("city-btn");
-        // Providing the initial button text
-        firstNewButton.text(userCity);
-        // Adding the button to the buttons-view div
-        $(".userButtonsDiv").append(firstNewButton);
-        $(".userButtonsDiv").append("<br></br>");
-
-        function renderButtons() {
-            $(".userButtonsDiv").empty();
-            for (var i = 0; i < userCityArray.length; i++) {
-
-                // Then dynamicaly generating buttons for each movie in the array
-                // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
-                var newButton = $("<button>");
-                // Adding a class of movie-btn to our button
-                newButton.addClass("city-btn");
-                // Adding a data-attribute
-                newButton.attr("data-name", userCityArray[i]);
-                // Providing the initial button text
-                newButton.text(userCityArray[i]);
-                // Adding the button to the buttons-view div
-                var userButtonNew = $(".userButtonsDiv").append(newButton);
-                $(".userButtonsDiv").append("<br></br>");
-                // var lastUser = JSON.parse(localStorage.getItem("userButtons"));
-
-                // var buttonArray = JSON.parse(localStorage.getItem("userButtons")) || [];
-                var userbuttons = [];
-                console.log(" what are userbuttons " + userbuttons);
-                userbuttons.push(userButtonNew);
-                console.log(" what are userbuttons now after push " + userbuttons);
-
-                localStorage.setItem("userbuttons", JSON.stringify(userbuttons));
-                // console.log("tonnetre button array " + buttonArray);
-                // console.log("tonnetre userButtons " + userbuttons);
-
-                // var storage = localStorage.setItem("userbuttons", userbuttons);
-                // console.log(storage);
-
-
-            }
-
-        }
+        renderButtons();
+        localStorage.setItem("savedSearches", JSON.stringify(userCityArray));
+      
 
         // Here we are building the URL we need to query the database
         if (userCity !== '') {
