@@ -61,21 +61,25 @@ $(document).ready(function() {
                     console.log(data);
 
                     // Transfer content to HTML
-                    $(".city").text("The city name is: " + data.city.name);
-                    $(".date").text("The date is: " + data.list[0].dt_txt);
+                    $(".city").text(data.city.name);
+                    $(".date").text('(' + data.list[0].dt_txt.trim() + ')');
+                    var topIconcode = data.list[0].weather[0].icon;
+                    var topIconurl = "http://openweathermap.org/img/w/" + topIconcode + ".png";
+                    $("<img>").attr("src", topIconurl);
+                    $(".iconTop").attr("src", topIconurl);
                     console.log("tonnette wants to know " + data.city.name);
-                    $(".temp").text("The Temperature (C) is: " + data.list[0].main.temp);
-                    $(".humidity").text("The humidity is: " + data.list[0].main.humidity);
-                    $(".wind").text("The wind speed is: " + data.list[0].wind.speed);
-                    $(".uvindex").text("The UV Index is: " + data.list[0].wind.speed);
+                    $(".temp").text("Temperature: " + data.list[0].main.temp + "°C");
+                    $(".humidity").text("Humidity: " + data.list[0].main.humidity + "%");
+                    $(".wind").text("Wind Speed: " + data.list[0].wind.speed + "MPH");
+                    $(".uvindex").text("UV Index: " + data.list[0].wind.speed);
 
                     for (var i = 0; i < 6; i++) {
                         var iconcode = data.list[i * 8].weather[0].icon;
                         var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
                         $("<img>").attr("src", iconurl);
                         $(".icon" + i).attr("src", iconurl);
-                        $(".tempCard" + i).text("Temp: " + data.list[i * 8].main.temp + " C");
-                        $(".humidCard" + i).text("Humidity: " + data.list[i * 8].main.humidity);
+                        $(".tempCard" + i).text("Temp: " + data.list[i * 8].main.temp + "°C");
+                        $(".humidCard" + i).text("Humidity: " + data.list[i * 8].main.humidity + "%");
                         $(".dateCard" + i).text(data.list[i * 8].dt_txt);
 
                     }
