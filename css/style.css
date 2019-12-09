@@ -2,6 +2,23 @@
     box-sizing: border-box;
 }
 
+.myDate,
+.date {
+    padding: 0px;
+    margin: 5px 0px 0px 0px;
+}
+
+.myCity,
+.city {
+    padding: 0px 0px 0px 6px;
+    margin: 0px;
+}
+
+.myIconTop {
+    padding: 0px;
+    margin: 0px;
+}
+
 
 /* Style the search field */
 
@@ -128,5 +145,7 @@ p {
 }
 
 .five-day {
-    display: none
+    display: none;
+    padding: 0px;
+    margin: 0px;
 }

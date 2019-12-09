@@ -62,7 +62,7 @@ $(document).ready(function() {
 
                     // Transfer content to HTML
                     $(".city").text(data.city.name);
-                    $(".date").text('(' + data.list[0].dt_txt.trim() + ')');
+                    $(".date").text('(' + data.list[0].dt_txt.slice(0, -9) + ')');
                     var topIconcode = data.list[0].weather[0].icon;
                     var topIconurl = "http://openweathermap.org/img/w/" + topIconcode + ".png";
                     $("<img>").attr("src", topIconurl);
@@ -80,7 +80,7 @@ $(document).ready(function() {
                         $(".icon" + i).attr("src", iconurl);
                         $(".tempCard" + i).text("Temp: " + data.list[i * 8].main.temp + "°C");
                         $(".humidCard" + i).text("Humidity: " + data.list[i * 8].main.humidity + "%");
-                        $(".dateCard" + i).text(data.list[i * 8].dt_txt);
+                        $(".dateCard" + i).text(data.list[i * 8].dt_txt.slice(0, -9));
 
                     }
                 });
