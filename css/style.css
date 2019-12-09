@@ -1,40 +1,46 @@
 * {
     box-sizing: border-box;
-  }
-  
-  /* Style the search field */
-  form.example input[type=text] {
+}
+
+
+/* Style the search field */
+
+form.example input[type=text] {
     padding: 10px;
     font-size: 17px;
     border: 1px solid grey;
     float: left;
     width: 80%;
     padding-left: 5px;
- 
-  }
-  
-  /* Style the submit button */
-  form.example button {
+}
+
+
+/* Style the submit button */
+
+form.example button {
     float: right;
     width: 15%;
     padding: 5px;
     background: #2196F3;
     color: white;
     font-size: 17px;
-    border-left: none; /* Prevent double borders */
+    border-left: none;
+    /* Prevent double borders */
     cursor: pointer;
-  }
-  
-  form.example button:hover {
+}
+
+form.example button:hover {
     background: #0b7dda;
-  }
-  
-  /* Clear floats */
-  form.example::after {
+}
+
+
+/* Clear floats */
+
+form.example::after {
     content: "";
     clear: both;
     display: table;
-  }
+}
 
 body {
     font-family: 'Open Sans', sans-serif;
@@ -46,8 +52,6 @@ p {
     font-weight: bold;
     color: grey;
 }
-
-
 
 .bigContainer {
     border: 1px solid lightgray;
@@ -66,45 +70,59 @@ p {
 }
 
 .leftHandDiv {
-    border-right: 1px solid lightgray;
-    background-color: #f0fbff;
     padding-top: 10px;
     padding-left: 10px;
     padding-bottom: 25px;
+    height: relative;
 }
 
 .userButtonsDiv {
-    
-    padding: 75px;
-    
     margin: 25px 10px 0px 0px;
-    background-color: white;
+    background-color: #fafeff;
+    text-align: center;
 }
 
-.myRow, .myCol {
+.myRow {
     margin: 0px;
     padding: 0px;
 }
 
+.myCol {
+    margin: 0px;
+    padding: 0px;
+    border-right: 1px solid lightgrey;
+    background-color: #fafeff;
+}
 
+.rightCol {
+    background-color: white;
+}
 
 .searchField {
     padding: 10px;
 }
 
 .leftSide {
-  border: none;
+    border: none;
 }
+
 .card {
-  border: none;
-  background-color: #2196F3;
-  color: white;
-  margin: 25px 25px 0px 0px;;
-  width: relative;
-  display: none;
-  text-align: center;
-  padding: 5px;
-  
+    border: none;
+    background-color: #2196F3;
+    color: white;
+    margin: 25px 25px 0px 0px;
+    ;
+    width: relative;
+    display: none;
+    text-align: center;
+    padding: 5px;
 }
 
-
+.city-btn {
+    padding: 10px;
+    width: 100%;
+    background-color: #0b7dda;
+    color: white;
+    text-align: center;
+    border: none;
+}
