@@ -1,7 +1,29 @@
 $(document).ready(function() {
     var userCityArray = [];
-    var newCity = $(this).attr("data-name");
+
+    var userStorageArray = JSON.parse(localStorage.getItem("savedSearches")) || [];
+    // $(".userButtonsDiv").empty();
+    console.log("this is what is in userStorageArray" + userStorageArray);
+    for (var j = 0; j < userStorageArray.length; j++) {
+        var buttonTag = $("<button>");
+        buttonTag.textContent = userStorageArray[j];
+
+        // Adding a class of movie-btn to our button
+        buttonTag.addClass("city-btn");
+        // Adding a data-attribute
+        buttonTag.attr("data-name", userStorageArray[j]);
+        // Providing the initial button text
+        buttonTag.text(userStorageArray[j]);
+        // Adding the button to the buttons-view div
+        $(".userButtonsDiv").append(buttonTag);
+        $(".userButtonsDiv").append("<br></br>");
+
+    }
     $(document).on("click", ".city-btn", alertCityName);
+
+    // });
+
+
 
     function renderButtons() {
         $(".userButtonsDiv").empty();
@@ -17,7 +39,7 @@ $(document).ready(function() {
             // Providing the initial button text
             newButton.text(userCityArray[i]);
             // Adding the button to the buttons-view div
-            var userButtonNew = $(".userButtonsDiv").append(newButton);
+            $(".userButtonsDiv").append(newButton);
             $(".userButtonsDiv").append("<br></br>");
 
         }
@@ -37,7 +59,7 @@ $(document).ready(function() {
             .then(function(data) {
                 // Log the queryURL
                 console.log(newURL);
-                console.log(data);
+                console.log("the data is saying" + data);
 
                 // Transfer content to HTML
                 $(".city").text(data.city.name);
@@ -103,7 +125,7 @@ $(document).ready(function() {
                 .then(function(data) {
                     // Log the queryURL
                     console.log(queryURL);
-                    console.log(data);
+                    console.log("the data is saying: " + data);
 
                     // Transfer content to HTML
                     $(".city").text(data.city.name);
