@@ -1,9 +1,10 @@
 $(document).ready(function() {
+    $(document).on("click", ".city-btn", alertCityName);
     var userCityArray = [];
 
     var userStorageArray = JSON.parse(localStorage.getItem("savedSearches")) || [];
     // $(".userButtonsDiv").empty();
-    console.log("this is what is in userStorageArray" + userStorageArray);
+    console.log("this is what is in userStorageArray " + userStorageArray);
     for (var j = 0; j < userStorageArray.length; j++) {
         var buttonTag = $("<button>");
         buttonTag.textContent = userStorageArray[j];
@@ -17,17 +18,11 @@ $(document).ready(function() {
         // Adding the button to the buttons-view div
         $(".userButtonsDiv").append(buttonTag);
         $(".userButtonsDiv").append("<br></br>");
-
     }
-    $(document).on("click", ".city-btn", alertCityName);
-
-    // });
-
-
 
     function renderButtons() {
         $(".userButtonsDiv").empty();
-        for (var i = 0; i < userCityArray.length; i++) {
+        for (var k = 0; k < userCityArray.length; k++) {
 
             // Then dynamicaly generating buttons for each movie in the array
             // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
@@ -35,9 +30,9 @@ $(document).ready(function() {
             // Adding a class of movie-btn to our button
             newButton.addClass("city-btn");
             // Adding a data-attribute
-            newButton.attr("data-name", userCityArray[i]);
+            newButton.attr("data-name", userCityArray[k]);
             // Providing the initial button text
-            newButton.text(userCityArray[i]);
+            newButton.text(userCityArray[k]);
             // Adding the button to the buttons-view div
             $(".userButtonsDiv").append(newButton);
             $(".userButtonsDiv").append("<br></br>");
@@ -60,7 +55,7 @@ $(document).ready(function() {
                 // Log the queryURL
                 console.log(newURL);
                 console.log("the data is saying" + data);
-
+                $(".card").show();
                 // Transfer content to HTML
                 $(".city").text(data.city.name);
                 $(".date").text('(' + data.list[0].dt_txt.slice(0, -9) + ')');
@@ -75,6 +70,7 @@ $(document).ready(function() {
                 $(".uvindex").text("UV Index: " + data.list[0].wind.speed);
 
                 for (var i = 0; i < 6; i++) {
+                    console.log(i);
                     var iconcode = data.list[i * 8].weather[0].icon;
                     var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
                     $("<img>").attr("src", iconurl);
