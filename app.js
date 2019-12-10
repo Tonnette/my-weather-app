@@ -47,7 +47,13 @@ $(document).ready(function() {
         $.ajax({
                 url: newURL,
                 method: "GET",
-                dataType: "jsonp"
+                dataType: "jsonp",
+                statusCode: {
+                    404: function() {
+                        alert("city not found");
+                        return false;
+                    }
+                }
 
             })
             //     // We store all of the retrieved data inside of an object called "response"
@@ -87,16 +93,11 @@ $(document).ready(function() {
 
     $(".mag").on("click", function() {
         event.preventDefault();
-        renderButtons();
+
         var userCity = $("#searchField").val();
         var queryURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + userCity + "&units=metric" + "&APPID=8260f022448e3f07d6465f550bc77374";
 
-        userCityArray.push(userCity);
-        console.log(userCity);
-        console.log(userCityArray);
-        console.log(queryURL);
-        renderButtons();
-        localStorage.setItem("savedSearches", JSON.stringify(userCityArray));
+
 
 
         // Here we are building the URL we need to query the database
@@ -114,14 +115,27 @@ $(document).ready(function() {
             $.ajax({
                     url: queryURL,
                     method: "GET",
-                    dataType: "jsonp"
+                    dataType: "jsonp",
+                    statusCode: {
+                        404: function() {
+                            alert("city not found");
+                            return false;
+                        }
+                    }
 
                 })
                 //     // We store all of the retrieved data inside of an object called "response"
                 .then(function(data) {
+                    userCityArray.push(userCity);
+                    console.log(userCity);
+                    console.log(userCityArray);
+                    console.log(queryURL);
+
+                    localStorage.setItem("savedSearches", JSON.stringify(userCityArray));
                     // Log the queryURL
                     console.log(queryURL);
                     console.log("the data is saying: " + data);
+                    renderButtons();
 
                     // Transfer content to HTML
                     $(".city").text(data.city.name);
