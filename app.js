@@ -24,8 +24,9 @@ $(document).ready(function() {
     }
 
     function renderButtons() {
+        var userStorageArray = JSON.parse(localStorage.getItem("savedSearches")) || [];
         $(".userButtonsDiv").empty();
-        for (var k = 0; k < userCityArray.length; k++) {
+        for (var k = 0; k < userStorageArray.length; k++) {
 
             // Then dynamicaly generating buttons for each movie in the array
             // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
@@ -33,9 +34,9 @@ $(document).ready(function() {
             // Adding a class of movie-btn to our button
             newButton.addClass("city-btn");
             // Adding a data-attribute
-            newButton.attr("data-name", userCityArray[k]);
+            newButton.attr("data-name", userStorageArray[k]);
             // Providing the initial button text
-            newButton.text(userCityArray[k]);
+            newButton.text(userStorageArray[k]);
             // Adding the button to the buttons-view div
             $(".userButtonsDiv").append(newButton);
             $(".userButtonsDiv").append("<br></br>");
@@ -177,9 +178,10 @@ $(document).ready(function() {
 
 
                         });
-
-                    userCityArray.push(userCity);
-                    localStorage.setItem("savedSearches", JSON.stringify(userCityArray));
+                    var grabStorage = JSON.parse(localStorage.getItem("savedSearches")) || [];
+                    grabStorage.push(userCity);
+                    localStorage.setItem("savedSearches", JSON.stringify(grabStorage));
+                    
 
                     renderButtons();
 
