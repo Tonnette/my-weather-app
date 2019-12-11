@@ -80,7 +80,7 @@ $(document).ready(function() {
                 .then(function(newUVData) {
 
 
-                    $(".uvindex").text("UV Index: " + newUVData[0].value);
+                    $(".redCard").text(newUVData[0].value);
 
 
                 })
@@ -88,6 +88,8 @@ $(document).ready(function() {
             // Log the queryURL
 
             $(".card").show();
+            $(".redCard").show();
+            $(".uvindex").show();
             // Transfer content to HTML
             $(".city").text(mydata.city.name);
             $(".date").text('(' + mydata.list[0].dt_txt.slice(0, -9) + ')');
@@ -126,7 +128,9 @@ $(document).ready(function() {
         // Here we are building the URL we need to query the database
         if (userCity !== '') {
             $(".card").show();
+            $(".redCard").show();
             $(".five-day").show();
+            $(".uvindex").show();
             // var APIKey = "";
             myAjax();
         } else {
@@ -167,7 +171,7 @@ $(document).ready(function() {
                         .then(function(UVData) {
 
                             console.log(UVData);
-                            $(".uvindex").text("UV Index: " + UVData[0].value);
+                            $(".redCard").text(UVData[0].value);
 
 
                         });
