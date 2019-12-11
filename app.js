@@ -123,7 +123,7 @@ $(document).ready(function() {
         event.preventDefault();
         var userCity = $("#searchField").val();
         var queryURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + userCity + "&units=metric" + "&APPID=8260f022448e3f07d6465f550bc77374";
-
+        document.querySelector("#searchField").value = '';
 
         // Here we are building the URL we need to query the database
         if (userCity !== '') {
@@ -146,7 +146,9 @@ $(document).ready(function() {
                     statusCode: {
                         404: function() {
                             alert("city not found");
+                            // $("#searchField").clear();
                             return false;
+
                         }
                     }
 
@@ -204,6 +206,7 @@ $(document).ready(function() {
                         $(".dateCard" + i).text(data.list[i * 8].dt_txt.slice(0, -9));
 
                     }
+
 
                 });
 
