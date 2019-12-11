@@ -48,47 +48,71 @@ $(document).ready(function() {
         var newCity = $(this).attr("data-name");
         var newURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + newCity + "&units=metric" + "&APPID=8260f022448e3f07d6465f550bc77374";
         $.ajax({
-                url: newURL,
-                method: "GET",
-                dataType: "jsonp",
-                statusCode: {
-                    404: function() {
-                        alert("city not found");
-                        return false;
-                    }
+            url: newURL,
+            method: "GET",
+            dataType: "jsonp",
+            statusCode: {
+                404: function() {
+                    alert("city not found");
+                    return false;
                 }
+            }
 
-            })
-            //     // We store all of the retrieved data inside of an object called "response"
-            .then(function(data) {
-                // Log the queryURL
-                console.log(newURL);
-                $(".card").show();
-                // Transfer content to HTML
-                $(".city").text(data.city.name);
-                $(".date").text('(' + data.list[0].dt_txt.slice(0, -9) + ')');
-                var topIconcode = data.list[0].weather[0].icon;
-                var topIconurl = "http://openweathermap.org/img/w/" + topIconcode + ".png";
-                $("<img>").attr("src", topIconurl);
-                $(".iconTop").attr("src", topIconurl);
-                console.log("tonnette wants to know " + data.city.name);
-                $(".temp").text("Temperature: " + data.list[0].main.temp + "°C");
-                $(".humidity").text("Humidity: " + data.list[0].main.humidity + "%");
-                $(".wind").text("Wind Speed: " + data.list[0].wind.speed + "MPH");
-                $(".uvindex").text("UV Index: " + data.list[0].wind.speed);
+        })
 
-                for (var i = 0; i < 6; i++) {
-                    console.log(i);
-                    var iconcode = data.list[i * 8].weather[0].icon;
-                    var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-                    $("<img>").attr("src", iconurl);
-                    $(".icon" + i).attr("src", iconurl);
-                    $(".tempCard" + i).text("Temp: " + data.list[i * 8].main.temp + "°C");
-                    $(".humidCard" + i).text("Humidity: " + data.list[i * 8].main.humidity + "%");
-                    $(".dateCard" + i).text(data.list[i * 8].dt_txt.slice(0, -9));
+        // this is getting the UV index info"
+        // this is getting the UV index info"
+        .then(function(mydata) {
+            var newlat = mydata.city.coord.lat;
+            var newlong = mydata.city.coord.lon;
 
-                }
-            });
+            var newCoordsURL = "http://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + newlat + "&lon=" + newlong + "&APPID=8260f022448e3f07d6465f550bc77374";
+
+
+            console.log(newCoordsURL);
+
+            $.ajax({
+                    url: newCoordsURL,
+                    method: "GET",
+
+                })
+                //     // We store all of the retrieved data inside of an object called "uvData"
+                .then(function(newUVData) {
+
+
+                    $(".uvindex").text("UV Index: " + newUVData[0].value);
+
+
+                })
+
+            // Log the queryURL
+
+            $(".card").show();
+            // Transfer content to HTML
+            $(".city").text(mydata.city.name);
+            $(".date").text('(' + mydata.list[0].dt_txt.slice(0, -9) + ')');
+            var topIconcode = mydata.list[0].weather[0].icon;
+            var topIconurl = "http://openweathermap.org/img/w/" + topIconcode + ".png";
+            $("<img>").attr("src", topIconurl);
+            $(".iconTop").attr("src", topIconurl);
+
+            $(".temp").text("Temperature: " + mydata.list[0].main.temp + "°C");
+            $(".humidity").text("Humidity: " + mydata.list[0].main.humidity + "%");
+            $(".wind").text("Wind Speed: " + mydata.list[0].wind.speed + "MPH");
+
+
+            for (var i = 0; i < 6; i++) {
+
+                var iconcode = mydata.list[i * 8].weather[0].icon;
+                var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+                $("<img>").attr("src", iconurl);
+                $(".icon" + i).attr("src", iconurl);
+                $(".tempCard" + i).text("Temp: " + mydata.list[i * 8].main.temp + "°C");
+                $(".humidCard" + i).text("Humidity: " + mydata.list[i * 8].main.humidity + "%");
+                $(".dateCard" + i).text(mydata.list[i * 8].dt_txt.slice(0, -9));
+
+            }
+        });
     };
 
 
