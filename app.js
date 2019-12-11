@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $(document).on("click", ".city-btn", alertCityName);
-    var userCityArray = [];
+    var ExistingCityArray = [];
 
     var userStorageArray = JSON.parse(localStorage.getItem("savedSearches")) || [];
     storageArray();
@@ -60,16 +60,12 @@ $(document).ready(function() {
             }
 
         })
-
         // this is getting the UV index info"
-        // this is getting the UV index info"
+      
         .then(function(mydata) {
             var newlat = mydata.city.coord.lat;
             var newlong = mydata.city.coord.lon;
-
             var newCoordsURL = "http://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + newlat + "&lon=" + newlong + "&APPID=8260f022448e3f07d6465f550bc77374";
-
-
             console.log(newCoordsURL);
 
             $.ajax({
@@ -137,6 +133,10 @@ $(document).ready(function() {
         } else {
             alert("field cannot be empty");
         }
+
+        // Condition
+        // IF exisintCityNameArray contains the userCity, then do nothing
+        // ELSE do the rest, & add userCity to existingCityNameArray
 
         function myAjax() {
             // // Here we run our AJAX call to the OpenWeatherMap API
