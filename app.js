@@ -3,21 +3,24 @@ $(document).ready(function() {
     var userCityArray = [];
 
     var userStorageArray = JSON.parse(localStorage.getItem("savedSearches")) || [];
-    // $(".userButtonsDiv").empty();
-    console.log("this is what is in userStorageArray " + userStorageArray);
-    for (var j = 0; j < userStorageArray.length; j++) {
-        var buttonTag = $("<button>");
-        buttonTag.textContent = userStorageArray[j];
+    storageArray();
 
-        // Adding a class of movie-btn to our button
-        buttonTag.addClass("city-btn");
-        // Adding a data-attribute
-        buttonTag.attr("data-name", userStorageArray[j]);
-        // Providing the initial button text
-        buttonTag.text(userStorageArray[j]);
-        // Adding the button to the buttons-view div
-        $(".userButtonsDiv").append(buttonTag);
-        $(".userButtonsDiv").append("<br></br>");
+    function storageArray() {
+        // $(".userButtonsDiv").empty();
+        console.log("this is what is in userStorageArray: " + userStorageArray);
+        for (var j = 0; j < userStorageArray.length; j++) {
+            var buttonTag = $("<button>");
+            buttonTag.textContent = userStorageArray[j];
+            // Adding a class of movie-btn to our button
+            buttonTag.addClass("city-btn");
+            // Adding a data-attribute
+            buttonTag.attr("data-name", userStorageArray[j]);
+            // Providing the initial button text
+            buttonTag.text(userStorageArray[j]);
+            // Adding the button to the buttons-view div
+            $(".userButtonsDiv").append(buttonTag);
+            $(".userButtonsDiv").append("<br></br>");
+        }
     }
 
     function renderButtons() {
@@ -60,7 +63,6 @@ $(document).ready(function() {
             .then(function(data) {
                 // Log the queryURL
                 console.log(newURL);
-                console.log("the data is saying" + data);
                 $(".card").show();
                 // Transfer content to HTML
                 $(".city").text(data.city.name);
@@ -93,11 +95,8 @@ $(document).ready(function() {
 
     $(".mag").on("click", function() {
         event.preventDefault();
-
         var userCity = $("#searchField").val();
         var queryURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + userCity + "&units=metric" + "&APPID=8260f022448e3f07d6465f550bc77374";
-
-
 
 
         // Here we are building the URL we need to query the database
@@ -124,17 +123,34 @@ $(document).ready(function() {
                     }
 
                 })
-                //     // We store all of the retrieved data inside of an object called "response"
+                //     // this is getting the UV index info"
                 .then(function(data) {
-                    userCityArray.push(userCity);
-                    console.log(userCity);
-                    console.log(userCityArray);
-                    console.log(queryURL);
+                    var lat = data.city.coord.lat;
+                    var long = data.city.coord.lon;
 
+                    var coordsURL = "http://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + long + "&APPID=8260f022448e3f07d6465f550bc77374";
+
+                    console.log("i want to know what the lat is: " + lat);
+                    console.log("i want to know what the long is: " + long);
+                    console.log(coordsURL);
+
+                    $.ajax({
+                            url: coordsURL,
+                            method: "GET",
+
+                        })
+                        //     // We store all of the retrieved data inside of an object called "uvData"
+                        .then(function(UVData) {
+
+                            console.log(UVData);
+                            $(".uvindex").text("UV Index: " + UVData[0].value);
+
+
+                        });
+
+                    userCityArray.push(userCity);
                     localStorage.setItem("savedSearches", JSON.stringify(userCityArray));
-                    // Log the queryURL
-                    console.log(queryURL);
-                    console.log("the data is saying: " + data);
+
                     renderButtons();
 
                     // Transfer content to HTML
@@ -144,11 +160,11 @@ $(document).ready(function() {
                     var topIconurl = "http://openweathermap.org/img/w/" + topIconcode + ".png";
                     $("<img>").attr("src", topIconurl);
                     $(".iconTop").attr("src", topIconurl);
-                    console.log("tonnette wants to know " + data.city.name);
+                    // console.log("tonnette wants to know " + data.city.name);
                     $(".temp").text("Temperature: " + data.list[0].main.temp + "°C");
                     $(".humidity").text("Humidity: " + data.list[0].main.humidity + "%");
                     $(".wind").text("Wind Speed: " + data.list[0].wind.speed + "MPH");
-                    $(".uvindex").text("UV Index: " + data.list[0].wind.speed);
+
 
                     for (var i = 0; i < 6; i++) {
                         var iconcode = data.list[i * 8].weather[0].icon;
@@ -160,19 +176,10 @@ $(document).ready(function() {
                         $(".dateCard" + i).text(data.list[i * 8].dt_txt.slice(0, -9));
 
                     }
+
                 });
 
-
-
-
-
-
-
         }
-
-
-
-
 
     });
 
