@@ -65,7 +65,18 @@ $(document).ready(function() {
         .then(function(mydata) {
             var newlat = mydata.city.coord.lat;
             var newlong = mydata.city.coord.lon;
-            var newCoordsURL = "http://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + newlat + "&lon=" + newlong + "&APPID=8260f022448e3f07d6465f550bc77374";
+var newCoordsURL;
+
+            if (location.protocol === 'http:') {
+                newCoordsURL ="http://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + newlat + "&lon=" + newlong + "&APPID=8260f022448e3f07d6465f550bc77374";
+                ;
+             } else {
+                newCoordsURL = "https://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + newlat + "&lon=" + newlong + "&APPID=8260f022448e3f07d6465f550bc77374";
+
+             }
+
+
+            // var newCoordsURL = "http://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + newlat + "&lon=" + newlong + "&APPID=8260f022448e3f07d6465f550bc77374";
             console.log(newCoordsURL);
 
             $.ajax({
@@ -160,8 +171,19 @@ $(document).ready(function() {
                     var lat = data.city.coord.lat;
                     var long = data.city.coord.lon;
 
-                    var coordsURL = "http://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + long + "&APPID=8260f022448e3f07d6465f550bc77374";
+                    // var coordsURL = "http://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + long + "&APPID=8260f022448e3f07d6465f550bc77374";
 
+                    var coordsURL;
+
+                    if (location.protocol === 'http:') {
+                        oordsURL ="http://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + long + "&APPID=8260f022448e3f07d6465f550bc77374";
+                        ;
+                     } else {
+                        coordsURL ="https://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + long + "&APPID=8260f022448e3f07d6465f550bc77374";
+        
+                     }
+                   
+                   
                     console.log("i want to know what the lat is: " + lat);
                     console.log("i want to know what the long is: " + long);
                     console.log(coordsURL);
