@@ -49,19 +49,19 @@ $(document).ready(function() {
         var newCity = $(this).attr("data-name");
         var newURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + newCity + "&units=metric" + "&APPID=8260f022448e3f07d6465f550bc77374";
         $.ajax({
-            url: newURL,
-            method: "GET",
-            dataType: "jsonp",
-            statusCode: {
-                404: function() {
-                    alert("city not found");
-                    return false;
+                url: newURL,
+                method: "GET",
+                dataType: "jsonp",
+                statusCode: {
+                    404: function() {
+                        alert("city not found");
+                        return false;
+                    }
                 }
-            }
 
-        })
-        // this is getting the UV index info"
-      
+            })
+            // this is getting the UV index info"
+
         .then(function(mydata) {
             var newlat = mydata.city.coord.lat;
             var newlong = mydata.city.coord.lon;
@@ -135,6 +135,7 @@ $(document).ready(function() {
         }
 
         // Condition
+
         // IF exisintCityNameArray contains the userCity, then do nothing
         // ELSE do the rest, & add userCity to existingCityNameArray
 
@@ -178,10 +179,23 @@ $(document).ready(function() {
 
 
                         });
+
                     var grabStorage = JSON.parse(localStorage.getItem("savedSearches")) || [];
-                    grabStorage.push(userCity);
+
+                    var cityAlreadySaved = false;
+
+                    for (var i = 0; i < grabStorage.length; i++) {
+                        if (grabStorage[i] === userCity) {
+                            cityAlreadySaved = true;
+                        }
+                    }
+
+                    if (cityAlreadySaved === false) {
+                        grabStorage.push(userCity);
+                    }
+
                     localStorage.setItem("savedSearches", JSON.stringify(grabStorage));
-                    
+
 
                     renderButtons();
 
