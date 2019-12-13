@@ -47,7 +47,7 @@ $(document).ready(function() {
 
     function alertCityName() {
         var newCity = $(this).attr("data-name");
-        var newURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + newCity + "&units=metric" + "&APPID=8260f022448e3f07d6465f550bc77374";
+        var newURL = 'http://api.openweathermap.org/data/2.5/forecast?q=' + newCity + "&units=metric" + "&APPID=8260f022448e3f07d6465f550bc77374";
         $.ajax({
                 url: newURL,
                 method: "GET",
@@ -119,7 +119,7 @@ $(document).ready(function() {
     $(".mag").on("click", function() {
         event.preventDefault();
         var userCity = $("#searchField").val();
-        var queryURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + userCity + "&units=metric" + "&APPID=8260f022448e3f07d6465f550bc77374";
+        var queryURL = 'http://api.openweathermap.org/data/2.5/forecast?q=' + userCity + "&units=metric" + "&APPID=8260f022448e3f07d6465f550bc77374";
         document.querySelector("#searchField").value = '';
 
         // Here we are building the URL we need to query the database
