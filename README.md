@@ -24,7 +24,7 @@ This website was built using bootstrap, html, CSS, JavaScript, JQuery and the Op
 
 # Screenshot
 
-![About Me](https://github.com/JEQP/JPortfolio2/blob/master/jportfolio2Index.jpg)
+![ScreenShot](https://github.com/Tonnette/Tonnette.github.io/blob/master/weatherScreen.png)
 
 # contributors
 Tonnette Stanford
