@@ -47,7 +47,7 @@ $(document).ready(function() {
 
     function alertCityName() {
         var newCity = $(this).attr("data-name");
-        var newURL = 'http://api.openweathermap.org/data/2.5/forecast?q=' + newCity + "&units=metric" + "&APPID=8260f022448e3f07d6465f550bc77374";
+        var newURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + newCity + "&units=metric" + "&APPID=8260f022448e3f07d6465f550bc77374";
         $.ajax({
                 url: newURL,
                 method: "GET",
@@ -102,7 +102,7 @@ var newCoordsURL;
             $(".city").text(mydata.city.name);
             $(".date").text('(' + mydata.list[0].dt_txt.slice(0, -9) + ')');
             var topIconcode = mydata.list[0].weather[0].icon;
-            var topIconurl = "http://openweathermap.org/img/w/" + topIconcode + ".png";
+            var topIconurl = "https://openweathermap.org/img/w/" + topIconcode + ".png";
             $("<img>").attr("src", topIconurl);
             $(".iconTop").attr("src", topIconurl);
 
@@ -130,7 +130,7 @@ var newCoordsURL;
     $(".mag").on("click", function() {
         event.preventDefault();
         var userCity = $("#searchField").val();
-        var queryURL = 'http://api.openweathermap.org/data/2.5/forecast?q=' + userCity + "&units=metric" + "&APPID=8260f022448e3f07d6465f550bc77374";
+        var queryURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + userCity + "&units=metric" + "&APPID=8260f022448e3f07d6465f550bc77374";
         document.querySelector("#searchField").value = '';
 
         // Here we are building the URL we need to query the database
@@ -176,7 +176,7 @@ var newCoordsURL;
                     var coordsURL;
 
                     if (location.protocol === 'http:') {
-                        oordsURL ="http://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + long + "&APPID=8260f022448e3f07d6465f550bc77374";
+                        coordsURL ="http://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + long + "&APPID=8260f022448e3f07d6465f550bc77374";
                         ;
                      } else {
                         coordsURL ="https://api.openweathermap.org/data/2.5/uvi/forecast?lat=" + lat + "&lon=" + long + "&APPID=8260f022448e3f07d6465f550bc77374";
