@@ -24,8 +24,7 @@ This website was built using bootstrap, html, CSS, JavaScript, JQuery and the Op
 
 # Screenshot
 
-![ScreenShot of App](https://https://tonnette.github.io/)
-
+![About Me](https://github.com/JEQP/JPortfolio2/blob/master/jportfolio2Index.jpg)
 
 # contributors
 Tonnette Stanford
