@@ -98,6 +98,8 @@ var newCoordsURL;
             $(".card").show();
             $(".redCard").show();
             $(".uvindex").show();
+            $(".five-day").show();
+            
             // Transfer content to HTML
             $(".city").text(mydata.city.name);
             $(".date").text('(' + mydata.list[0].dt_txt.slice(0, -9) + ')');
