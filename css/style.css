@@ -156,6 +156,10 @@ p {
 .indexCol {
     margin: Opx 0px 0px 0px;
     padding: 10px 0px 0px 17px;
+    text-align: left;
+}
+.textCol {
+    text-align: left;
 }
 
 .city-btn {
@@ -177,7 +181,7 @@ p {
     display: none;
 }
 
-/* @media (max-width: 384px) {
+@media (min-width: 0px) and (max-width: 383px){
     .myCity {
         text-align: center;
         padding-top: 0px;
@@ -191,57 +195,36 @@ p {
         padding-top: 0px;
         
     }
-    .redCol {
-        position: absolute;
-        left: 50%;
-        transform: translatex(-50%);
-        padding-left: 100px;
-    }
-    .myCardRow {
-        position: relative;
-        left: 50%;
-        margin-left: 3px;
-        transform: translatex(-50%);
-    }
-    .colCard {
-        text-align: center;
-        width: 100px;
-    }
-    .weather-section {
-        padding-top: 0px;
-    }
-} */
-@media (min-width: 259px) and (max-width: 383px){
-    .myCity {
-        text-align: center;
-        padding-top: 0px;
-    }
-    .myDate {
-        text-align: center;
-    }
-    .myIconTop {
-        text-align: center;
-        padding-top: 50px;
-        padding-top: 0px;
-        
+    .redCol{
+        text-align: center;  
     }
 
-    /* .myCardRow {
-        position: relative;
-        left: 50%;
-        margin-left: 3px;
-        transform: translatex(-50%);
-    } */
     .colCard {
         text-align: center;
         width: 100px;
     }
     .weather-section {
         padding-top: 0px;
+    }
+     .textCol {
+        text-align: center;
+
+    } 
+    .redCol{
+        text-align: center;
+        left: 45%;
+        padding-top: 15px;
+    }
+
+
+    .indexCol {
+        text-align: center;
+        
     }
 }
 
-@media (min-width: 384px) and (max-width: 1000px){
+
+@media (min-width: 384px) and (max-width: 700px){
     .myCity {
         text-align: center;
         padding-top: 0px;
@@ -255,33 +238,20 @@ p {
         padding-top: 0px;
         
     }
-    .redCol {
-        text-align: center;
-        padding-top: 5px;
-        /* padding-left: 25px; */
-       
-    }
-    .textCol,  .indexCol {
-        text-align: center;
-
-    }
     .redCol{
         text-align: center;
-        position: relative;
         left: 45%;
         padding-top: 15px;
-        /* margin-left: 3px;
-        transform: translatex(-50%); */
-
     }
 
-    .indexCol {
-        position: relative;
-        left: 50%;
-        margin-left: 3px;
-        transform: translatex(-50%);
+    /* .indexCol {
+        text-align: center;
+        
+    } */
+    .textCol {
+        text-align: center;
 
-    }
+    } 
     .myCardRow {
         position: relative;
         left: 50%;
