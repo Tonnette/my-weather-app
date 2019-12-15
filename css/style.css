@@ -226,12 +226,12 @@ p {
         
     }
 
-    .myCardRow {
+    /* .myCardRow {
         position: relative;
         left: 50%;
         margin-left: 3px;
         transform: translatex(-50%);
-    }
+    } */
     .colCard {
         text-align: center;
         width: 100px;
@@ -241,7 +241,7 @@ p {
     }
 }
 
-@media (min-width: 384px) and (max-width: 800px){
+@media (min-width: 384px) and (max-width: 1000px){
     .myCity {
         text-align: center;
         padding-top: 0px;
@@ -255,12 +255,12 @@ p {
         padding-top: 0px;
         
     }
-    /* .redCol {
+    .redCol {
         text-align: center;
         padding-top: 5px;
-        padding-left: 25px;
+        /* padding-left: 25px; */
        
-    } */
+    }
     .textCol,  .indexCol {
         text-align: center;
 
