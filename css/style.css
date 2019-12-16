@@ -137,11 +137,11 @@ p {
 }
 
 .redCard {
+    display: inline-block;
     border: none;
     background-color: red;
     color: white;
     width: 50px;
-    display: none;
     text-align: center;
     padding: 15px 0px 15px 0px;
     z-index: -5;
@@ -181,7 +181,8 @@ p {
     display: none;
 }
 
-@media (min-width: 0px) and (max-width: 383px){
+
+@media (min-width: 0px) and (max-width: 600px){
     .myCity {
         text-align: center;
         padding-top: 0px;
@@ -195,52 +196,12 @@ p {
         padding-top: 0px;
         
     }
-    .redCol{
-        text-align: center;  
-    }
-
-    .colCard {
-        text-align: center;
-        width: 100px;
-    }
-    .weather-section {
-        padding-top: 0px;
-    }
-     .textCol {
-        text-align: center;
-
-    } 
-    .redCol{
-        text-align: center;
-        left: 45%;
-        padding-top: 15px;
-    }
-
-
     .indexCol {
         text-align: center;
-        
-    }
-}
-
-
-@media (min-width: 384px) and (max-width: 700px){
-    .myCity {
-        text-align: center;
-        padding-top: 0px;
-    }
-    .myDate {
-        text-align: center;
-    }
-    .myIconTop {
-        text-align: center;
-        padding-top: 50px;
-        padding-top: 0px;
-        
-    }
+    } 
     .redCol{
-        text-align: center;
-        left: 45%;
+        text-align: center !important;
+      
         padding-top: 15px;
     }
 

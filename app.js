@@ -1,6 +1,7 @@
 $(document).ready(function() {
     $(document).on("click", ".city-btn", alertCityName);
     var ExistingCityArray = [];
+    $(".redCard").hide()
 
     var userStorageArray = JSON.parse(localStorage.getItem("savedSearches")) || [];
     storageArray();
